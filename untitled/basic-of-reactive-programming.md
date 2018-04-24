@@ -1,6 +1,6 @@
 # Basic of Reactive Programming
 
-Below is the best introduction I found so far.
+All we need is in the reference.
 
 ### References
 

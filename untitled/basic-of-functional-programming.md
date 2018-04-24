@@ -37,7 +37,5 @@ It has to have neither hidden inputs nor hidden outputs.
 
 ### What is 'Functional Programming'?
 
-Okay, finally comes to FP.
-
 FP is basically a way to construct our application with pure functions. And a functional programming language is one that supports and encourages programming without side-effects, help programmer eliminate side-effects wherever possible, and tightly control them wherever it's not. 
 
