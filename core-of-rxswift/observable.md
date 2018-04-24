@@ -132,5 +132,59 @@ let subsription = customizedSequence.subscribe {
 //Completed
 ```
 
+## Error
 
+`error(Error)` is a sequence only emit an `.Error` event
+
+```text
+let myError: Error = MyError.create()
+let errorSequence = Observable<Int>.error(myError)
+errorSequence.subscribe {
+    event in print(event)
+}
+
+//Error("MyError Description Will be Here")
+```
+
+### Deferred
+
+`deferred(factoryFunction: () throws -> Observable<Element>)` will use the factory function to create the observable each time a new observer subscribes.
+
+
+
+```text
+let deferredSequence: Observable<Int> = Observable.deferred {
+    print("Create Observable")
+    return Observable.create { observer -> Disposable in
+        observer.onNext(0)
+        observer.onNext(1)
+        
+        return Disposables.create()
+    }
+}
+
+deferredSequence.subscribe {
+    event in
+    print(event)
+}
+
+deferredSequence.subscribe {
+    event in
+    print(event)
+}
+
+//Create Observable
+//Next(0)
+//Next(1)
+//Create Observable
+//Next(0)
+//Next(1)
+```
+
+The use case of deferred\(\) is when we want to wait the initialization of the input element. Let's look at a simple example below:
+
+```text
+var elemnt: String? = nil
+let normalSequence
+```
 
