@@ -184,7 +184,34 @@ deferredSequence.subscribe {
 The use case of deferred\(\) is when we want to wait the initialization of the input element. Let's look at a simple example below:
 
 ```text
-var elemnt: String? = nil
-let normalSequence
+var element: String? = nil
+let normalSequence = Observable<String?>.just(element)
+
+//Got value here
+element = "Value"
+normalSequence.subscribe {
+    event in print(event)
+}
+
+
+//Next(nil)  //The value is nil. 
+//Completed
+```
+
+```text
+var element: String? = nil
+let deferredSequence = Observable<String?>.deferred {
+    return Observable<String?>.just(value)
+}
+
+//Got value here
+element = "Value"
+deferredSequence.subscribe {
+    event in print(event)
+}
+
+
+//Next(Optional("Value"))  //Now we got the desired result when using deferred().
+//Completed
 ```
 
