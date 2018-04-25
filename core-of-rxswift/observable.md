@@ -21,7 +21,7 @@ The most easy way to custom a observable is `Observable.create()` .
 
 Example:
 
-```text
+```swift
 let simpleStream = Observable<Int>.create {
     observer -> Disposable in
     observer.onNext(0)
@@ -51,7 +51,7 @@ There are many common way to create observables.
 
 `empty()` is an empty sequence, it emit only `.Completed` event.
 
-```text
+```swift
 let emptySequence: Observable<Int> = Observable.empty()
 let subcription = emptySequence.subscribe { 
     event in print(event)
@@ -64,7 +64,7 @@ let subcription = emptySequence.subscribe {
 
 `never()` is a sequence has no element and emit no events.
 
-```text
+```swift
 let neverSequence: Observable<Int> = Observable.never()
 let subscription = neverSequence.subscribe {
     _ in print("This block is never called")
@@ -75,7 +75,7 @@ let subscription = neverSequence.subscribe {
 
 `just(value)` is a sequence which contains only one element, it will emit `.Completed` event right after  the `.Next(value)` event.
 
-```text
+```swift
 let singleElementSequence = Observable<Int>.just(0)
 let subscription = singleElementSequence.subscribe {
     event in print(event)
@@ -89,7 +89,7 @@ let subscription = singleElementSequence.subscribe {
 
 `of(input...)` and `from(sequenceInput)`  is sequence which take a sequence of elements as input and transform it to a sequence of events.
 
-```text
+```swift
 let sequenceOfElements_of = Observable<Int>.of(0,1,2,3)
 let subscription = sequenceOfElements_of.subscribe {
     event in print(event)
@@ -112,7 +112,7 @@ let subscription = sequenceOfElements_from.subscribe {
 
 `create((AnyObserver<Element>) -> Disposable)` is used to customize the logic of event emitting. 
 
-```text
+```swift
 let customizedSequence = Observable<Int>.create {
     observer -> Disposable in
     observer.onNext(1)
@@ -136,7 +136,7 @@ let subsription = customizedSequence.subscribe {
 
 `error(Error)` is a sequence only emit an `.Error` event
 
-```text
+```swift
 let myError: Error = MyError.create()
 let errorSequence = Observable<Int>.error(myError)
 errorSequence.subscribe {
@@ -152,7 +152,7 @@ errorSequence.subscribe {
 
 
 
-```text
+```swift
 let deferredSequence: Observable<Int> = Observable.deferred {
     print("Create Observable")
     return Observable.create { observer -> Disposable in
@@ -183,7 +183,7 @@ deferredSequence.subscribe {
 
 The use case of deferred\(\) is when we want to wait the initialization of the input element. Let's look at a simple example below:
 
-```text
+```swift
 var element: String? = nil
 let normalSequence = Observable<String?>.just(element)
 
@@ -198,7 +198,7 @@ normalSequence.subscribe {
 //Completed
 ```
 
-```text
+```swift
 var element: String? = nil
 let deferredSequence = Observable<String?>.deferred {
     return Observable<String?>.just(value)

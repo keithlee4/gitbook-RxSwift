@@ -7,8 +7,7 @@
   * [Resource](untitled/resource.md)
 * [Core of RxSwift](core-of-rxswift/README.md)
   * [Observable & Observer](core-of-rxswift/observable.md)
-  * Subject
-  * Variable\(planned to deprecated\)
+  * [Subject](core-of-rxswift/subject.md)
   * Operator
   * Disposable
   * Scheduler

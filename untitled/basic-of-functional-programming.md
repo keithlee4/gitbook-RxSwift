@@ -2,7 +2,7 @@
 
 First we need to two simple functions to introduce what FP is.
 
-```text
+```swift
 public func sum(a: Int, b: Int) -> Int {
     return a + b
 }
@@ -12,7 +12,7 @@ So, the function takes an input of  `a:Int` and `b:Int`, and the output is also 
 
 Now the second function
 
-```text
+```swift
 public func doSomething() {
     let someSecretVar = SecretBox.popFirstSecretVar()
     decode(secretVar)

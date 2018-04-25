@@ -36,7 +36,7 @@ Below is a simple example of chaining multiple api requests:
 
 {% tabs %}
 {% tab title="OOP" %}
-```text
+```swift
 func someAPICall(complete: (_ result: Bool) -> Void) {
     //doSomething
     result(true)
@@ -59,7 +59,7 @@ func callAPIsInOrder() {
 {% endtab %}
 
 {% tab title="RxSwift" %}
-```text
+```swift
 func someAPICall() -> Observable<Bool> {
     return Observable.just(true)
 }
